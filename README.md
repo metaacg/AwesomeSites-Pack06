@@ -20,3 +20,4 @@
 - labs.otherlife.xyz
 - orion.adrianred.com
 - samsy.ninja
+- www.kokuyo.com
