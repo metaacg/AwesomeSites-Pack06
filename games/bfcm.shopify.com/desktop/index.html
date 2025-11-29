@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desktop OS</title>
+    <script type="module" crossorigin src="/desktop/assets/index.html-CH8xC9J_.js"></script>
+    <link rel="modulepreload" crossorigin href="/desktop/assets/vendor-Bbp6MtaK.js">
+    <link rel="stylesheet" crossorigin href="/desktop/assets/index-BaDopghH.css">
+  </head>
+  <body class="bg-black text-white min-h-screen overflow-hidden">
+    <!-- Status Bar -->
+    <desktop-status></desktop-status>
+
+    <!-- Desktop Area -->
+    <main class="pt-8 p-4 h-screen" data-section-name="desktop-area">
+      <!-- Desktop Icons (z-index: 1) -->
+      <div
+        class="relative flex flex-wrap flex-col gap-4 content-start h-full pointer-events-none z-[1] pt-4"
+      >
+        <app-icon target="bts-folder" label="Behind the scenes"></app-icon>
+        <app-icon target="vegas-sphere-folder" label="Vegas Sphere"></app-icon>
+        <app-icon
+          target="horizon-drive-window"
+          label="Drive"
+          icon="<img src='/desktop/assets/icons/drive.webp' class='w-13 h-13 object-cover' />"
+        ></app-icon>
+        <app-icon
+          file="/desktop/assets/files/careers.txt"
+          label="careers.txt"
+        ></app-icon>
+      </div>
+    </main>
+
+    <!-- Widgets (z-index: 50) -->
+    <div
+      class="grid grid-cols-2 place-items-center h-[calc(100vh-4rem)] content-center gap-4 fixed top-12 max-w-[calc(100vw-4rem)] right-4 pointer-events-none z-[50] max-h-screen justify-end align-end"
+    >
+      <app-widget title="edge" type="edge">
+        <edge-animation></edge-animation>
+      </app-widget>
+      <app-widget title="backend" type="backend">
+        <backend-animation></backend-animation>
+      </app-widget>
+      <app-widget title="other stuff" type="cdn">
+        <cdn-animation></cdn-animation>
+      </app-widget>
+      <app-widget title="logs & data" type="logs">
+        <logs-animation></logs-animation>
+      </app-widget>
+    </div>
+
+    <!-- Windows (z-index: 100+) -->
+    <app-folder
+      id="files-folder"
+      title="/usr/shop/files"
+      files='[
+        {"path": "/desktop/assets/files/README.md", "label": "README.md"}
+      ]'
+    ></app-folder>
+    <app-folder
+      id="bts-folder"
+      title="/usr/shop/bts"
+      files='[
+        {"path": "/desktop/assets/files/README.md", "label": "README.md"},
+        {"path": "/desktop/assets/files/design.md", "label": "DESIGN_NOTES.md"},
+        {"path": "/desktop/assets/files/engineering.md", "label": "ENG_NOTES.md"},
+        {"path": "/desktop/assets/files/data.md", "label": "DATA_NOTES.md"},
+        {"path": "/desktop/assets/models/minigame_boxes.glb", "label": "boxes.glb"},
+        {"path": "/desktop/assets/models/minigame_podiums.glb", "label": "podiums.glb"},
+        {"path": "/desktop/assets/models/minigame_shops.glb", "label": "store.glb"},
+        {"path": "/desktop/assets/images/globe_sketch_01.webp", "label": "globe_sketch_01.webp"},
+        {"path": "/desktop/assets/images/globe_sketch_02.webp", "label": "globe_sketch_02.webp"},
+        {"path": "/desktop/assets/images/final_colliders.webp", "label": "final_colliders.webp"},
+        {"path": "/desktop/assets/images/dmd_animations.png", "label": "dmd_animations.png"},
+        {"path": "/desktop/assets/images/DMDs_3.webp", "label": "dmds.webp"},
+        {"path": "/desktop/assets/images/cool_art_here.webp", "label": "cool_art_here.webp"},
+        {"path": "/desktop/assets/images/new_board_02.webp", "label": "old_board_02.webp"},
+        {"path": "/desktop/assets/images/new_board_03.webp", "label": "old_board_03.webp"},
+        {"path": "/desktop/assets/images/shopcube.webp", "label": "shop_cube.webp"},
+        {"path": "/desktop/assets/images/view_02.webp", "label": "early_layout.webp"},
+        {"path": "/desktop/assets/images/view_07.webp", "label": "globe_light.webp"}
+      ]'
+    ></app-folder>
+    <app-folder
+      id="vegas-sphere-folder"
+      title="/usr/shop/vegas-sphere"
+      files='[
+        {"path": "/desktop/assets/videos/globe_2024.mp4", "label": "globe_2024.mp4"},
+        {"path": "/desktop/assets/videos/globe_2025.mp4", "label": "globe_2025.mp4"}
+      ]'
+    ></app-folder>
+    <app-window
+      id="horizon-drive-window"
+      title="Horizon Drive"
+      src="https://www.shopify.com/ca/editions/summer2025/drive"
+    ></app-window>
+    <!-- Context Menus -->
+    <div
+      id="desktop-context-menu"
+      popover="auto"
+      class="app-widget p-2 m-0 border-2 border-gray-500"
+    >
+      <div class="grid place-items-center">
+        <button
+          data-exit-computer-mode="true"
+          class="w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-white/10 rounded transition-colors whitespace-nowrap font-mono"
+        >
+          Exit Computer Mode
+        </button>
+        <button
+          data-show-screensaver
+          class="w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-white/10 rounded transition-colors whitespace-nowrap font-mono"
+        >
+          Show Screensaver
+        </button>
+      </div>
+    </div>
+    <div
+      id="desktop-screensaver"
+      class="absolute inset-0 bg-black/75 pointer-events-none"
+      popover="auto"
+    >
+      <div class="shop-x">
+        <div class="shop bg-white rounded-full grid place-items-center">
+          <img
+            src="/desktop/assets/images/screensaver.webp"
+            alt="Screensaver"
+            class="w-full h-full object-cover rounded-full"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
